@@ -1,3 +1,13 @@
+"""
+Module for config
+
+Example:
+    config = config.parse_from_yaml()
+
+    for device in config.devices:
+        print(f"Device: {device.host}")
+"""
+
 import os
 
 import yaml
@@ -26,11 +36,11 @@ def parse_from_yaml(path="conf.yaml") -> Config:
             logger.error(f"Error parse conf. Error: {error}")
             exit(1)
 
-    if not 'devices' in conf:
+    if 'devices' not in conf:
         logger.error(f"Field devices not found in config")
         exit(1)
 
-    if not 'commands' in conf:
+    if 'commands' not in conf:
         logger.error(f"Field commands not found in config")
         exit(1)
 
@@ -51,7 +61,5 @@ def parse_from_yaml(path="conf.yaml") -> Config:
             secret=device.get('secret'),
             port=device['port']
         ))
-
-
 
     return config

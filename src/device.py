@@ -1,5 +1,6 @@
 from typing import NamedTuple, Optional
 
+
 class Device(NamedTuple):
     name: str
     device_type: str
@@ -8,5 +9,3 @@ class Device(NamedTuple):
     password: str
     secret: Optional[str]
     port: int
-
-
