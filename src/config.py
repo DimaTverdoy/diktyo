@@ -7,7 +7,7 @@ Example:
     for device in config.devices:
         print(f"Device: {device.host}")
 """
-
+import argparse
 import os
 
 import yaml
@@ -22,6 +22,19 @@ from device import Device
 class Config(NamedTuple):
     devices: List[Device]
     commands: List[str]
+    export: bool
+    multi: bool
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Tool to manage multiple network devices via ssh/telnet")
+
+    parser.add_argument("-e", "--export", dest="export", action='store_true',
+                        default=False, help="Export output to ./output")
+    parser.add_argument("-m", "--multithread", dest="multi", action='store_true',
+                        default=False, help="Launching each device in a new thread")
+
+    return parser.parse_args()
 
 
 def parse_from_yaml(path="conf.yaml") -> Config:
@@ -44,7 +57,8 @@ def parse_from_yaml(path="conf.yaml") -> Config:
         logger.error(f"Field commands not found in config")
         exit(1)
 
-    config = Config(devices=[], commands=conf['commands'])
+    args = parse_args()
+    config = Config(devices=[], commands=conf['commands'], export=args.export, multi=args.multi)
 
     for device in conf['devices']:
         name = list(device)[0]
