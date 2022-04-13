@@ -23,6 +23,7 @@ from netmiko.base_connection import BaseConnection
 from config import Config
 from device import Device
 
+
 SAVE_OUTPUT = "output"
 
 
