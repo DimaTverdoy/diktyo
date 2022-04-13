@@ -5,10 +5,9 @@ from manager import Manager
 
 from loguru import logger
 
-logger.info("Start program")
 
 config = parse_from_yaml()
-
+logger.info("Start program")
 
 def run_multi(conf: Config):
     manager_multi = Manager(conf=conf)
