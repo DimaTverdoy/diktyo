@@ -1,8 +1,6 @@
 __Diktyo__
 ==
 
-Description
-----
 The __Diktyo__ is tool to manage multiple network devices 
 via ssh/telnet. Based on libraries [netmiko](https://github.com/ktbyers/netmiko)
 
