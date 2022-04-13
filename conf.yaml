@@ -1,0 +1,10 @@
+devices:
+  - linux:
+      device_type: linux
+      host: 234.12.12.11
+      username: ubuntu
+      password: root
+      port: 22
+commands:
+    - ls
+    - pwd
