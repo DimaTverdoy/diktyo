@@ -9,6 +9,7 @@ from loguru import logger
 config = parse_from_yaml()
 logger.info("Start program")
 
+
 def run_multi(conf: Config):
     manager_multi = Manager(conf=conf)
 
